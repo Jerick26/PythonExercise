@@ -15,7 +15,7 @@ class Item(object):
     def ExtractObj(self, line, key):
         elems = line.split("\t")
         if elems[2] == key:
-            item = Item(elems[1], elems[2], elems[4].strip().replace("", ","))
+            item = Item(elems[1], elems[2], elems[4].strip().replace("", "，"))
             return item
         return None
 
@@ -52,5 +52,5 @@ if __name__ == "__main__":
             items.append(node)
             count = 0
     with open(out_file, 'w') as f:
-        json.dump(items, f, indent=4, separators=(',', ': '), encoding="utf-8",
-                  default=jsonDefault)
+        json.dump(items, f, ensure_ascii=False, indent=4,
+                  separators=(',', ': '), encoding="utf-8", default=jsonDefault)
