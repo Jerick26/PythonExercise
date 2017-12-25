@@ -40,13 +40,16 @@ if __name__ == "__main__":
                 if v not in prop_freq:
                     prop_freq[v] = 0
                 prop_freq[v] += int(fields[1])
-    print("total: {}".format(total))
     # for k, v in prop_freq.items():
     #     print("prop: {0}:\t\t{1}".format(k, v))
+    props_total = 0
     props = list((p, prop_freq.get(p)) for p in prop_freq)
     props.sort(key=itemgetter(1), reverse=True)
     for k, v in props:
+        props_total += v
         rt = float(v)/total
         if rt < rate:
             continue
         print("{0}:\t{1}\t{2:6.4f}".format(k, v, rt))
+    print("entities total count: {}, properties total count: {}"
+          .format(total, props_total))
