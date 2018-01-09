@@ -32,7 +32,7 @@ def get_attr_freq(file_path):
             elements = line.split("\t")
             if len(elements) != 5:
                 continue
-            if elements[4].strip() != "文化":
+            if elements[4].strip() != "社会_交通_交通工具":
                 continue
             if entity != elements[1]:
                 entity = elements[1]
